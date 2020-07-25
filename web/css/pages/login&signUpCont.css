@@ -1,0 +1,81 @@
+#content{
+    background-color:#999999;
+    color: white;
+    min-width: 803px;
+    width: 80%;
+    margin: 0 10% 150px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#content td p{
+    color: white;
+}
+
+#content table{
+    margin: 0 auto;
+}
+
+#content table td{
+    padding: 8px;
+}
+
+#content table #wrongNickName,#wrongUserName,#wrongPw,#wrongRePw{
+    color: #999999;
+    overflow: hidden;
+}
+
+#content a{
+    text-decoration: none;
+}
+
+#content input,select{
+    font-size: 20px;
+}
+
+p{
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.submitBt {
+    padding: 5px 20px;
+    margin: auto;
+    border-radius: 12px;
+    background: -webkit-linear-gradient(#57a8d6, #65fc4b);
+    font-size: 20px;
+    color: white;
+    letter-spacing: 2px;
+    text-align: center;
+    outline: none;
+    border: 0;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.submitBt:hover {
+    background: -webkit-linear-gradient(#3386ba, #6ac65c);
+    border: 0;
+}
+
+.otherBt {
+    padding: 5px 20px;
+    margin: auto;
+    border-radius: 12px;
+    background: -webkit-linear-gradient(#e10600, #edec41);
+    font-size: 20px;
+    color: white;
+    letter-spacing: 2px;
+    text-align: center;
+    outline: none;
+    border: 0;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.otherBt:hover {
+    background: -webkit-linear-gradient(#a63e3c, #b7b463);
+    border: 0;
+}

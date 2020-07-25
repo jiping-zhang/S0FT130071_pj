@@ -1,0 +1,56 @@
+table.contTable {
+    text-align: center;
+    margin: 20px auto 5px;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 2px #000;
+}
+
+/*table.contTable tbody{*/
+/*    width: 100%;*/
+/*}*/
+
+/*table.contTable tr th{*/
+/*    width: 100%;*/
+/*}*/
+
+table.contTable tr th:first-child, table.contTable tr td:first-child { /*设置table.navTable左边边框*/
+    border-left: 2px solid #eaeaea;
+}
+
+table.contTable tr th:last-child, table.contTable tr td:last-child { /*设置table.navTable右边边框*/
+    border-right: 2px solid #eaeaea;
+}
+
+table.contTable tr td:first-child, table.contTable tr td:nth-child(2), table.contTable tr td:nth-child(3),table.contTable tr td:nth-child(4), table.contTable tr td:last-child { /*设置table.navTable表格每列底部边框*/
+    border-bottom: 2px solid #eaeaea;
+}
+
+table.contTable tr th {
+    background: #eaeaea;
+    padding: 12px;
+    font-size: 30px;
+}
+
+table.contTable tr td {
+    width: 300px;
+    text-align: left;
+    padding: 10px;
+    font-weight: normal;
+}
+
+table.contTable tr:first-child th:first-child {
+    border-top-left-radius: 12px;
+}
+
+table.contTable tr:first-child th:last-child {
+    border-top-right-radius: 12px;
+}
+
+table.contTable tr:last-child td:first-child {
+    border-bottom-left-radius: 12px;
+}
+
+table.contTable tr:last-child td:last-child {
+    border-bottom-right-radius: 12px;
+}

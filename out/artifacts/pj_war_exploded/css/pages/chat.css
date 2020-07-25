@@ -1,0 +1,75 @@
+*{
+    padding: 0 ;
+    margin: 0;
+}
+
+#container {
+    width: 100%;
+}
+
+#content {
+    width: 40%;
+    margin: 0 auto;
+    border: 0;
+    position: relative;
+}
+
+#title{
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+
+#messageBox {
+    width: 100%;
+    padding: 0;
+    margin: 0 0 40px;
+    position: absolute;
+    top: 200px;
+}
+
+#messageBox div{
+    width: 70%;
+    border: 1px solid black;
+    border-radius: 15px;
+    font-size: 20px;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+
+#messageBox div.me{
+    float: right;
+    background: #bbfcbc;
+}
+
+#messageBox div.friend{
+    float: left;
+    background: white;
+}
+
+#sendBox{
+    width: 100%;
+    position: absolute;
+    top: 100px;
+}
+
+button{
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 18px;
+    color: black;
+    text-align: center;
+    outline: none;
+    display: inline;
+}
+
+button#submit{
+    background: #d4ffd8;
+}
+
+input{
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    min-width: 500px;
+}

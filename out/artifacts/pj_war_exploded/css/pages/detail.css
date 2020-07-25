@@ -1,0 +1,67 @@
+#content{
+    width: 80%;
+    margin: 0 10% 150px;
+    font-weight: bold;
+    font-size: 20px;
+    border: 2px solid #fff891;
+    text-align: center;
+    position: relative;
+}
+
+#content h2{
+    margin: 10px;
+}
+
+#content sup{
+    font-weight: normal;
+    font-size: small;
+}
+
+.imgContainer{
+    float: left;
+    width: 50%;
+    height: 400px;
+    position: relative;
+    border-radius: 10px;
+    margin: 10px;
+    overflow: hidden;
+    border: 1px solid pink;
+}
+
+#enlarge{
+    width: 30%;
+    float: right;
+    border-radius: 10px;
+    border: 1px solid pink;
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+
+#enlarge img{
+    position: absolute;
+}
+
+#content button{
+    padding: 15px;
+    margin: 10px;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: red;
+    border-radius: 15px;
+}
+
+.contImg{
+    position: absolute;
+}
+
+.infoBox{
+    height: 602px;
+}
+
+#description{
+    text-align: left;
+    font-weight: normal;
+    margin: 20px;
+}

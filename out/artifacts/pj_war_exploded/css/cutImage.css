@@ -1,0 +1,12 @@
+.imgContainer {
+    margin: 20px;
+    overflow: hidden;
+    border-radius: 20px;
+    display: inline-block;
+    position: relative;
+}
+
+.contImg {
+    alignment: center;
+    position: absolute;
+}
