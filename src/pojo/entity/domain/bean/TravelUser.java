@@ -7,6 +7,7 @@ public class TravelUser
 
     private int uID,state,allow;
     private String email,userName,pass;
+    private long date ;
 
     public TravelUser()
     {
@@ -94,6 +95,16 @@ public class TravelUser
         this.allow = allow;
     }
 
+    public long getDate()
+    {
+        return date;
+    }
+
+    public void setDate(long date)
+    {
+        this.date = date;
+    }
+
     @Override
     public String toString()
     {
@@ -104,10 +115,9 @@ public class TravelUser
                 ", email='" + email + '\'' +
                 ", userName='" + userName + '\'' +
                 ", pass='" + pass + '\'' +
+                ", date=" + date +
                 '}';
     }
-
-
 
     /*
     public void addThisUserToSQL()
