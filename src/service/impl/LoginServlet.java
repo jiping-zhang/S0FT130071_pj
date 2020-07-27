@@ -59,8 +59,16 @@ public class LoginServlet extends HttpServlet
                     if (dispatchUriObj!=null)
                         dispatchUri=((String)dispatchUriObj);
                 }
+                /*if (dispatchUri.equals("loginServlet"))
+                    dispatchUri="welcomeServlet";*/
+                System.out.println("succeed");
+                System.out.println(dispatchUri);
             }
+            else
+                System.out.println("wrong password");
         }
+        else
+            System.out.println("wrong email");
         if (wrongEmail)
             request.setAttribute("errorIndex", WRONG);
         else if (wrongPassword)

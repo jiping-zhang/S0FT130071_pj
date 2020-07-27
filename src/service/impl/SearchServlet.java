@@ -33,11 +33,13 @@ public class SearchServlet extends HttpServlet
             if (searchMethod.equals("title"))
             {
                 String title = request.getParameter("title");
+                title=title.replaceAll("'"," ");
                 travelImages = TravelImageDAO.searchImages(title,TravelImageDAO.BY_TITLE,byFavor?TravelImageDAO.BY_FAVOR:TravelImageDAO.BY_TIME);
             }
             else
             {
                 String description= request.getParameter("description");
+                description=description.replaceAll("'"," ");
                 travelImages = TravelImageDAO.searchImages(description,TravelImageDAO.BY_DESCRIPTION,byFavor?TravelImageDAO.BY_FAVOR:TravelImageDAO.BY_TIME);
             }
         }
