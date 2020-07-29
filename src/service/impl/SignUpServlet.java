@@ -28,8 +28,10 @@ public class SignUpServlet extends HttpServlet
         {
             TravelUser travelUser_toBeAdded = new TravelUser();
             travelUser_toBeAdded.setUserName(userName);
-            String secretedPassword= SHA256.sha256Hex(password+emailAddress);
-            travelUser_toBeAdded.setPass(secretedPassword);
+            /*String secretedPassword= SHA256.sha256Hex(password+emailAddress);
+            travelUser_toBeAdded.setPass(secretedPassword);*/
+            travelUser_toBeAdded.setPass(password);
+            System.out.println(password);
             travelUser_toBeAdded.setEmail(emailAddress);
             travelUser_toBeAdded.setState(1);
             TravelUser thisUser = TravelUserDAO.addNewUserIntoSQL(travelUser_toBeAdded);

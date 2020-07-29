@@ -1,4 +1,4 @@
-<%--
+<%@ page import="pojo.entity.domain.bean.TravelUser" %><%--
   Created by IntelliJ IDEA.
   User: 张稷平
   Date: 2020/7/14
@@ -18,13 +18,39 @@
     <title>sign up</title>
 </head>
 <body>
+<header id="navBox">
+    <%
+        TravelUser travelUser_login;
+        try
+        {
+            travelUser_login = (TravelUser) session.getAttribute("travelUser_login");
+        }
+        catch (NullPointerException e)
+        {
+            travelUser_login = null;
+        }
+        if (travelUser_login != null)
+        {
+            request.getRequestDispatcher("login").forward(request, response);
+        }
+        else
+        {
+    %>
+    <a href="login?fromUri=browserServlet"><span id="navRight" class="singleItem"><img src="sources/img/navBox/login.jpg">登陆</span></a>
+    <%
+        }
+    %>
+    <a href="welcomeServlet"><span class="singleItem">首页</span></a>
+    <a href="browserServlet"><span class="singleItem">浏览页</span></a>
+    <a href="searchServlet"><span class="singleItem">搜索页</span></a>
+</header>
 <section id="content">
     <%
         Object errorMessage = request.getAttribute("errorMessage");
-        String errorMessageStr="";
-        boolean hasError = (errorMessage!=null);
+        String errorMessageStr = "";
+        boolean hasError = (errorMessage != null);
         if (hasError)
-            errorMessageStr=((String)errorMessage);
+            errorMessageStr = ((String) errorMessage);
     %>
     <script>
         <%= hasError?("alert('"+errorMessageStr+"')"):"" %>
@@ -34,25 +60,27 @@
             <tr>
                 <td><p>输入用户名</p></td>
                 <td><input type="text" name="nickName" id="nickName" required onblur="nickNameCheck();"
-                           pattern="[A-Za-z0-9_]{6,16}"  <%=hasError?("value=\""+request.getParameter("nickName")+"\""):""%>></td>
-                <td colspan="2"><p id="wrongNickName">昵称需由6-16位 字母或数字或_ 组成</p></td>
+                           pattern="[A-Za-z0-9_]{4,15}"  <%=hasError?("value=\""+request.getParameter("nickName")+"\""):""%>>
+                </td>
+                <td colspan="2"><p id="wrongNickName">昵称需由4-15位 字母或数字或_ 组成</p></td>
             </tr>
             <tr>
                 <td><p>输入邮箱名</p></td>
                 <td><input type="text" name="userName" id="userName" required onblur="userNameCheck();"
-                           pattern="\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}" <%=hasError?("value=\""+request.getParameter("userName")+"\""):""%>></td>
+                           pattern="\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}" <%=hasError?("value=\""+request.getParameter("userName")+"\""):""%>>
+                </td>
                 <td colspan="2"><p id="wrongUserName">邮箱名需为正确的邮箱地址</p></td>
             </tr>
             <tr>
                 <td><p>输入密码</p></td>
                 <td><input type="password" name="password" id="password" onblur="passwordCheck();rePasswordCheck()"
                            onkeyup="passwordCheck();rePasswordCheck()" required="required"
-                           pattern="[0-9a-zA-Z]{8,17}"></td>
-                <td colspan="2"><p id="wrongPw">密码需由8-16位 英语字母或数字 组成</p></td>
+                           pattern="[0-9a-zA-Z]{6,12}"></td>
+                <td colspan="2"><p id="wrongPw">密码需由6-12位 英语字母或数字 组成</p></td>
             </tr>
             <tr>
                 <td></td>
-                <td><span style="color: #d1f8ff">密码强度: </span><span id="intensity"></span></td>
+                <td><p><span style="color: #d1f8ff">密码强度: </span><span id="intensity"></span></p></td>
                 <td></td>
                 <td></td>
             </tr>
@@ -60,7 +88,7 @@
                 <td><p>确认密码</p></td>
                 <td><input type="password" name="rePassword" id="rePassword" onblur="rePasswordCheck()"
                            onkeyup="rePasswordCheck()"
-                           required="required" pattern="[0-9a-zA-Z]{8,17}"></td>
+                           required="required" pattern="[0-9a-zA-Z]{6,12}"></td>
                 <td colspan="2"><p id="wrongRePw">两次输入的密码不一样</p></td>
             </tr>
             <tr>
@@ -76,14 +104,12 @@
                     var dataList = ["0", "1"];
                     var options = {
                         dataList: dataList,
-                        success: function ()
-                        {
+                        success: function () {
                             console.log("show");
                             document.getElementById("imgCheckInput").value = 1;
                             document.getElementById("imgCheck").innerHTML = "验证通过";
                         },
-                        fail: function ()
-                        {
+                        fail: function () {
                             console.log("fail");
                         }
                     };

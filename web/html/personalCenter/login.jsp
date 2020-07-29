@@ -84,18 +84,20 @@
         if (isLogin)
         {
     %>
+    <form method="post" action="loginServlet" id="loginForm">
     <table>
         <tr>
-            <td>您已登录，用户名：</td>
-            <td><%=travelUser_login.getUserName()%>
+            <td><p>您已登录，用户名：</p></td>
+            <td><p><%=travelUser_login.getUserName()%></p>
             </td>
         </tr>
         <tr>
             <td>
-                <button class="submitBt" onclick="window.location.href='logoutServlet'">退出登录</button>
+                <button type="button" class="submitBt" onclick="window.location.href='logoutServlet'">退出登录</button>
             </td>
         </tr>
     </table>
+    </form>
     <%
     }
     else
@@ -105,14 +107,14 @@
         <table>
             <tr>
                 <td><p>邮箱</p></td>
-                <td><input type="text" name="emailAddress" required="required"
+                <td><input type="text" name="emailAddress" id="emailAddress" required="required"
                            pattern="\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}" value="<%=request.getParameter("emailAddress")==null?"":request.getParameter("emailAddress")%>"></td>
                 <td></td>
                 <td></td>
             </tr>
             <tr>
                 <td><p>密码</p></td>
-                <td><input type="password" name="password" id="password" required="required" pattern="[0-9a-zA-Z]{8,}">
+                <td><input type="password" name="password" id="password" required="required" pattern="[0-9a-zA-Z]{6,12}">
                 </td>
                 <td></td>
                 <td></td>

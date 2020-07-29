@@ -1,4 +1,4 @@
-<%--
+<%@ page import="pojo.entity.domain.bean.TravelUser" %><%--
   Created by IntelliJ IDEA.
   User: 张稷平
   Date: 2020/7/14
@@ -19,6 +19,52 @@
     <title>upload</title>
 </head>
 <body>
+<header id="navBox">
+    <%
+        TravelUser travelUser_login;
+        try
+        {
+            travelUser_login = (TravelUser) session.getAttribute("travelUser_login");
+        }
+        catch (NullPointerException e)
+        {
+            travelUser_login = null;
+        }
+        if (travelUser_login != null)
+        {
+    %>
+    <div class="singleMenu" id="navRight">
+        <span>个人中心</span>
+        <div class="singleCont">
+            <a href="upload"><span class="singleItem"><img
+                    src="sources/img/navBox/upload.jpg">上传</span></a>
+            <br>
+            <a href="myphotosServlet"><span class="singleItem" id="selected"><img
+                    src="sources/img/navBox/myphotos.jpg">我的照片</span></a>
+            <br>
+            <a href="myFavoriteServlet"><span class="singleItem"><img
+                    src="sources/img/navBox/myfavourite.jpg">我的收藏</span></a>
+            <br>
+            <a href="login"><span class="singleItem"><img
+                    src="sources/img/navBox/login.jpg">登陆</span></a>
+            <br>
+            <a href="myFriendsServlet"><span class="singleItem"><img
+                    src="sources/img/navBox/myfriends.jpg">我的好友</span></a>
+        </div>
+    </div>
+    <%
+        }
+        else
+        {
+            request.setAttribute("fromURI","myPhotosServlet");
+            request.getRequestDispatcher("login").forward(request,response);
+            return;
+        }
+    %>
+    <a href="welcomeServlet"><span class="singleItem">首页</span></a>
+    <a href="browserServlet"><span class="singleItem">浏览页</span></a>
+    <a href="searchServlet"><span class="singleItem">搜索页</span></a>
+</header>
 <section id="content">
     <form name="uploadForm" id="contentForm" action="uploadServlet" method="post" enctype="multipart/form-data">
         <div class="contRow title">

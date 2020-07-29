@@ -24,27 +24,27 @@ passInput.addEventListener("keyup", function ()
 	}
 	else
 		intensity = 26 * (lowerLetter + upperLetter);
-	if (intensity<=100)
+	if (intensity<=80)
 	{
 		intensityText.innerHTML="极弱";
 		intensityText.style.color="#ff8c93";
 	}
-	else if (intensity>100&&intensity<=200)
+	else if (intensity>80&&intensity<=160)
 	{
 		intensityText.innerHTML="　弱";
 		intensityText.style.color="#ffd5b4";
 	}
-	else if (intensity>200&&intensity<=320)
+	else if (intensity>160&&intensity<=240)
 	{
 		intensityText.innerHTML="　中";
 		intensityText.style.color="#fffdc7";
 	}
-	else if (intensity>320&&intensity<=420)
+	else if (intensity>240&&intensity<=320)
 	{
 		intensityText.innerHTML="　强";
 		intensityText.style.color="#e8ffc6";
 	}
-	else if (intensity>420)
+	else if (intensity>320)
 	{
 		intensityText.innerHTML="很强";
 		intensityText.style.color="#bbffc5";

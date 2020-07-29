@@ -45,7 +45,8 @@ public class LoginServlet extends HttpServlet
         if (travelUser!=null)
         {
             wrongEmail=false;
-            if (travelUser.getPass().equals(SHA256.sha256Hex(enteredPassword+enteredEmailAddress)))
+            //if (travelUser.getPass().equals(SHA256.sha256Hex(enteredPassword+enteredEmailAddress)))
+            if (travelUser.getPass().equals(enteredPassword))
             {
                 request.getSession().setAttribute("travelUser_login", travelUser);
                 wrongPassword = false;

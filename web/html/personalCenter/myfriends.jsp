@@ -1,7 +1,8 @@
 <%@ page import="pojo.entity.domain.bean.TravelUser" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Iterator" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Date" %><%--
   Created by IntelliJ IDEA.
   User: 张稷平
   Date: 2020/7/14
@@ -157,9 +158,14 @@
         <%
             for (TravelUser travelUser : myFriends)
             {
+                Date date = new Date(travelUser.getDate());
         %>
         <div>
             <p>用户名:<%=travelUser.getUserName()%></p>
+            <br>
+            <p>邮箱:<%=travelUser.getEmail()%></p>
+            <br>
+            <p>注册时间:<%=date.getYear()%>-<%=(date.getMonth()+1)%>-<%=date.getDate()%>/<%=date.getHours()%>-<%=date.getMinutes()%>-<%=date.getSeconds()%></p>
             <button class="chat" onclick="window.open('chatServlet?uid=<%=travelUser.getuID()%>')">和ta聊天</button>
             <button class="friendFavor" onclick="<%=travelUser.getAllow()==0?"alert('该用户禁止好友查看ta的收藏')":"window.location.href='friendsFavoriteServlet?friendID="+travelUser.getuID()+"'"%>">ta的喜欢</button>
         </div>
