@@ -150,7 +150,7 @@ public class TravelImageDAO
             sql += sb.toString().substring(2);
             sql += (sortMode == BY_FAVOR ? "order by favor desc" : "order by date desc");
             List<TravelImage> partlyMatchImages = new DAO<TravelImage>(TravelImage.class).getResultList(sql);
-            append(matchImages,partlyMatchImages);
+            append(matchImages, partlyMatchImages);
             if (matchImages.size() >= 6)
                 return matchImages;
             else
@@ -159,54 +159,55 @@ public class TravelImageDAO
                 ArrayList<TravelImage> lowMatchImages = new ArrayList<>();
                 for (String keyWord : keyWords)
                 {
-                    for (int i = 0; i <= (keyWord.length() - 2); i++)
-                    {
-                        String keyWordCopy = "%"+keyWord.substring(0, i) + "%" + keyWord.substring(i + 1)+"%";
-                        //System.out.println(keyWordCopy);
-                        sql = "select imageID,title,description,cityCode,countryCode,uID,path,content,favor,date from travelimage where " + searchMethodStr + " like ?";
-                        append(lowMatchImages,new DAO<TravelImage>(TravelImage.class).getResultList(sql,keyWordCopy));
-                    }
+                    if (keyWord.length() > 2)
+                        for (int i = 0; i <= (keyWord.length() - 2); i++)
+                        {
+                            String keyWordCopy = "%" + keyWord.substring(0, i) + "%" + keyWord.substring(i + 1) + "%";
+                            //System.out.println(keyWordCopy);
+                            sql = "select imageID,title,description,cityCode,countryCode,uID,path,content,favor,date from travelimage where " + searchMethodStr + " like ?";
+                            append(lowMatchImages, new DAO<TravelImage>(TravelImage.class).getResultList(sql, keyWordCopy));
+                        }
                 }
                 lowMatchImages.sort(new Comparator<TravelImage>()
                 {
                     @Override
                     public int compare(TravelImage o1, TravelImage o2)
                     {
-                        if (sortMode==BY_TIME)
+                        if (sortMode == BY_TIME)
                         {
-                            if (o1.getDate()<o2.getDate())
+                            if (o1.getDate() < o2.getDate())
                                 return 1;
-                            else if (o1.getDate()==o2.getDate())
+                            else if (o1.getDate() == o2.getDate())
                                 return 0;
-                            else 
+                            else
                                 return -1;
                         }
-                        else 
+                        else
                         {
-                            if (o1.getFavor()<o2.getFavor())
+                            if (o1.getFavor() < o2.getFavor())
                                 return 1;
-                            else if (o1.getFavor()==o2.getFavor())
+                            else if (o1.getFavor() == o2.getFavor())
                                 return 0;
                             else
                                 return -1;
                         }
                     }
                 });
-                append(matchImages,lowMatchImages);
+                append(matchImages, lowMatchImages);
                 return matchImages;
             }
         }
     }
 
-    private static void append(List<TravelImage> originalList , List<TravelImage> addList)
+    private static void append(List<TravelImage> originalList, List<TravelImage> addList)
     {
         int size = originalList.size();
         for (TravelImage addImage : addList)
         {
-            boolean exist = false ;
-            for (int i = 0 ; i < size ; i++)
+            boolean exist = false;
+            for (int i = 0; i < size; i++)
             {
-                if (originalList.get(i).getImageID()==addImage.getImageID())
+                if (originalList.get(i).getImageID() == addImage.getImageID())
                 {
                     exist = true;
                     break;

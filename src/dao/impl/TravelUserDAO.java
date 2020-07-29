@@ -72,8 +72,8 @@ public class TravelUserDAO
 
     public static TravelUser addNewUserIntoSQL(TravelUser travelUser)
     {
-        String sql = "insert into traveluser (Email ,UserName , Pass , State) values (?,?,?,1)";
-        new DAO<TravelUser>(TravelUser.class).update(sql, travelUser.getEmail(), travelUser.getUserName(), travelUser.getPass());
+        String sql = "insert into traveluser (Email ,UserName , Pass , State ,date) values (?,?,?,1,?)";
+        new DAO<TravelUser>(TravelUser.class).update(sql, travelUser.getEmail(), travelUser.getUserName(), travelUser.getPass(),new Date().getTime());
         TravelUser thisUser = getTravelUserByEmail(travelUser.getEmail());
         HistoryDAO.generateTable(thisUser.getuID());
         return thisUser;
@@ -94,9 +94,8 @@ public class TravelUserDAO
         new DAO<TravelUser>(TravelUser.class).update("update traveluser set allow = ? where UID = ?", (allow ? 1 : 0), uid);
     }
 
-    /*public static void main(String[] args)
+    public static void main(String[] args)
     {
-        for (TravelUser travelUser : FriendDAO.getFriendList(1))
-            System.out.println(travelUser);
-    }*/
+        System.out.println(new Date().getTime());
+    }
 }
